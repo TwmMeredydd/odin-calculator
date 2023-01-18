@@ -1,11 +1,11 @@
 let n1, operator, n2, equation, resultOnDisplay;
 
-numButtons = document.querySelectorAll("[num]");
-opButtons = document.querySelectorAll("[op]");
-decimalButton = document.getElementById("decimal");
-computeButton = document.getElementById("compute");
-clearEntryButton = document.getElementById("clear-entry");
-clearButton = document.getElementById("clear");
+const numButtons = document.querySelectorAll("[num]");
+const opButtons = document.querySelectorAll("[op]");
+const decimalButton = document.getElementById("decimal");
+const computeButton = document.getElementById("compute");
+const clearEntryButton = document.getElementById("clear-entry");
+const clearButton = document.getElementById("clear");
 
 numButtons.forEach(e => e.addEventListener("click", () => handleNumber(e.getAttribute("num"))));
 opButtons.forEach(e => e.addEventListener("click", () => handleOperator(e.getAttribute("op"))));

@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 75vmin;
+    width: 60vmin;
+    background-color: #353535;
+    border: 8px solid #202020;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 4px;
+}

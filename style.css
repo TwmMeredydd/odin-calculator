@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 body {
     display: flex;
     justify-content: center;
@@ -5,17 +7,55 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+    color: #eee;
 }
 
 #calculator {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    height: 75vmin;
-    width: 60vmin;
+    grid-template-columns: repeat(4, 10vmin);
+    grid-template-rows: 10vmin repeat(5, 7vmin);
     background-color: #353535;
     border: 8px solid #202020;
     border-radius: 8px;
     padding: 8px;
-    gap: 4px;
+    gap: 8px;
+} 
+
+#display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-row: 1;
+    grid-column: 1 / 5;
+    background-color: #1a1a1a;
+    font-family: Obitron, sans-serif;
+    padding: 8px;
+}
+
+#equation, #result {
+    text-align: right;
+}
+
+#equation {
+    font-size: 24px;
+}
+
+#result {
+    font-size: 32px;
+}
+
+#calculator > button {
+    border-style: none;
+    font-size: 32px;
+    color: #eee;
+    background-color: #454545;
+}
+
+#calculator > button:hover {
+    background-color: #404040;
+}
+
+#calculator > button:active {
+    background-color: #505050;
 }

@@ -7,6 +7,7 @@ const computeButton = document.getElementById("compute");
 const clearEntryButton = document.getElementById("clear-entry");
 const clearButton = document.getElementById("clear");
 
+document.addEventListener("keydown", handleKeyPress);
 numButtons.forEach(e => e.addEventListener("click", () => handleNumber(e.getAttribute("num"))));
 opButtons.forEach(e => e.addEventListener("click", () => handleOperator(e.getAttribute("op"))));
 decimalButton.addEventListener("click", handleDecimal);
@@ -14,21 +15,53 @@ computeButton.addEventListener("click", compute);
 clearEntryButton.addEventListener("click", handleClearEntry);
 clearButton.addEventListener("click", resetCalcuator);
 
+function handleKeyPress(e) {
+    if (e.key >= 0 && e.key <= 9) {
+        e.preventDefault();
+        handleNumber(e.key);
+    } else if (e.key == "+") {
+        e.preventDefault();
+        handleOperator("+");
+    } else if (e.key == "-") {
+        e.preventDefault();
+        handleOperator("-");
+    } else if (e.key == "/") {
+        e.preventDefault();
+        handleOperator("÷");
+    } else if (e.key == "*") {
+        e.preventDefault();
+        handleOperator("\u00d7");
+    } else if (e.key == ".") {
+        e.preventDefault();
+        handleDecimal();
+    } else if (e.key == "=" || e.key == "Enter") {
+        e.preventDefault();
+        compute();
+    } else if (e.key == "Delete") {
+        e.preventDefault();
+        resetCalcuator();
+    } else if (e.key == "Backspace") {
+        e.preventDefault();
+        handleClearEntry();
+    }
+}
+
 function handleDecimal() {
     if (operator == "") {
         n1 += ".";
     } else {
         n2 += ".";
     }
+    syncDisplay();
 }
 
 function handleNumber(val) {
     if (resultOnDisplay) resetCalcuator();
 
     if (operator == "") {
-        n1 = (n1 * 10 + +val).toString();
+        n1 = +(n1 + val).toString();
     } else {
-        n2 = (n2 * 10 + +val).toString();
+        n2 = +(n2 + val).toString();
     }
     syncDisplay();
 }

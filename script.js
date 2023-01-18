@@ -4,11 +4,13 @@ numButtons = document.querySelectorAll("[num]");
 opButtons = document.querySelectorAll("[op]");
 decimalButton = document.getElementById("decimal");
 computeButton = document.getElementById("compute");
+clearEntryButton = document.getElementById("clear-entry");
 
 numButtons.forEach(e => e.addEventListener("click", () => handleNumber(e.getAttribute("num"))));
 opButtons.forEach(e => e.addEventListener("click", () => handleOperator(e.getAttribute("op"))));
 decimalButton.addEventListener("click", handleDecimal);
 computeButton.addEventListener("click", compute);
+clearEntryButton.addEventListener("click", handleClearEntry);
 
 function handleDecimal() {
     if (operator == "") {
@@ -37,6 +39,15 @@ function handleOperator(op) {
     operator = op;
     resultOnDisplay = false;
     prevEquation = [n1, op].join(" ")
+    syncDisplay();
+}
+
+function handleClearEntry(op) {
+    if (operator == "") {
+        n1 = "0";
+    } else {
+        n2 = "0";
+    }
     syncDisplay();
 }
 

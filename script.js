@@ -47,9 +47,9 @@ function handleKeyPress(e) {
 }
 
 function handleDecimal() {
-    if (operator == "") {
+    if (operator == "" && !n1.includes(".")) {
         n1 += ".";
-    } else {
+    } else if (!n2.includes(".")) {
         n2 += ".";
     }
     syncDisplay();
@@ -59,9 +59,9 @@ function handleNumber(val) {
     if (resultOnDisplay) resetCalcuator();
 
     if (operator == "") {
-        n1 = +(n1 + val).toString();
+        n1 = (+(n1 + val)).toString();
     } else {
-        n2 = +(n2 + val).toString();
+        n2 = (+(n2 + val)).toString();
     }
     syncDisplay();
 }
